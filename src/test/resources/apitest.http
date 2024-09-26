@@ -1,0 +1,24 @@
+GET http://localhost:8080/target/student/all
+
+###
+
+POST http://localhost:8080/target/student
+Content-Type: application/json
+
+{
+  "name": "Samu"
+}
+
+###
+
+GET http://localhost:8080/source/record/all
+
+###
+
+POST http://localhost:8080/source/record
+Content-Type: application/json
+
+{
+  "json": "{\"a\":2}",
+  "time": "2024-09-26T00:00:00"
+}
