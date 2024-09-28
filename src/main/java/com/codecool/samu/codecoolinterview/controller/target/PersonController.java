@@ -29,8 +29,8 @@ public class PersonController {
         return personService.getUserById(id);
     }
 
-    @GetMapping("/name/{name}")
-    public Person getStudentByName(@PathVariable String name) {
-        return personService.getUserByName(name);
+    @GetMapping("/email/{email}")
+    public Person getStudentByEmail(@PathVariable String email) {
+        return personService.findByEmail(email);
     }
 }

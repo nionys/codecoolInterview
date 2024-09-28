@@ -4,7 +4,7 @@ public class NoSuchPersonException extends RuntimeException {
     public NoSuchPersonException(long id) {
         super("No user with id: %d".formatted(id));
     }
-    public NoSuchPersonException(String name) {
-        super("No user with name: %s".formatted(name));
+    public NoSuchPersonException(String email) {
+        super("No user with email: %s".formatted(email));
     }
 }

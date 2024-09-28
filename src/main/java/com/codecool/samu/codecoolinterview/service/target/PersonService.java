@@ -34,7 +34,7 @@ public class PersonService {
         return personRepository.findById(id).orElseThrow(() -> new NoSuchPersonException(id));
     }
 
-    public Person getUserByName(String name) {
-        return personRepository.findByName(name).orElseThrow(() -> new NoSuchPersonException(name));
+    public Person findByEmail(String email) {
+        return personRepository.findByEmail(email).orElseThrow(() -> new NoSuchPersonException(email));
     }
 }

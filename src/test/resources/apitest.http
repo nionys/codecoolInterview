@@ -4,16 +4,22 @@ POST http://localhost:8080/target/person
 Content-Type: application/json
 
 {
-  "name": "Samu",
-  "email": "asd@asd.com"
+  "name": "Samu2",
+  "email": "asd2@asd.com"
 }
 ###
-GET http://localhost:8080/target/person/name/Samu
+GET http://localhost:8080/target/person/email/asd2@asd.com
 ###
 GET http://localhost:8080/target/student/all
 ###
 POST http://localhost:8080/target/student/promote
+
+asd2@asd.com
+###
+POST http://localhost:8080/target/student
 Content-Type: application/json
 
-1
-###
+{
+  "name": "STUDENT 1",
+  "email": "student@email.com"
+}

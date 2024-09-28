@@ -22,4 +22,7 @@ public class Student {
         return person.getId();
     }
 
+    public Person getPerson() {
+        return person;
+    }
 }

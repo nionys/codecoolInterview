@@ -2,6 +2,7 @@ package com.codecool.samu.codecoolinterview.controller.target;
 
 import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
 import com.codecool.samu.codecoolinterview.dbTarget.model.Student;
+import com.codecool.samu.codecoolinterview.dto.PersonDto;
 import com.codecool.samu.codecoolinterview.service.target.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +17,17 @@ public class StudentController {
     }
 
     @PostMapping("/promote")
-    public long promoteToStudent(@RequestBody long personId) {
-        return studentService.promoteToStudent(personId);
+    public long promoteToStudent(@RequestBody String email) {
+        return studentService.promoteToStudent(email);
     }
 
     @GetMapping("/all")
-    public List<Student> getAllStudents() {
+    public List<Person> getAllStudents() {
         return studentService.getAllStudents();
+    }
+
+    @PostMapping("")
+    public long createStudent(@RequestBody Person person) {
+        return studentService.createStudent(person);
     }
 }
