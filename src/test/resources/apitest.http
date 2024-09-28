@@ -1,6 +1,6 @@
-GET http://localhost:8080/target/user/all
+GET http://localhost:8080/target/person/all
 ###
-POST http://localhost:8080/target/user/
+POST http://localhost:8080/target/person
 Content-Type: application/json
 
 {
@@ -8,4 +8,12 @@ Content-Type: application/json
   "email": "asd@asd.com"
 }
 ###
-GET http://localhost:8080/target/user/name/Samu
+GET http://localhost:8080/target/person/name/Samu
+###
+GET http://localhost:8080/target/student/all
+###
+POST http://localhost:8080/target/student/promote
+Content-Type: application/json
+
+1
+###

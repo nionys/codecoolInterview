@@ -1,10 +1,10 @@
 package com.codecool.samu.codecoolinterview.exception;
 
-public class NoSuchUserException extends RuntimeException {
-    public NoSuchUserException(long id) {
+public class NoSuchPersonException extends RuntimeException {
+    public NoSuchPersonException(long id) {
         super("No user with id: %d".formatted(id));
     }
-    public NoSuchUserException(String name) {
+    public NoSuchPersonException(String name) {
         super("No user with name: %s".formatted(name));
     }
 }

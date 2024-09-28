@@ -41,7 +41,7 @@ public class DbTargetConfiguration {
         return builder
             .dataSource(dataSource)
             .packages(
-                User.class,
+                Person.class,
                 Student.class,
                 Mentor.class,
                 Exam.class,

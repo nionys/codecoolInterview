@@ -9,5 +9,5 @@ public class Mentor {
     @GeneratedValue
     private long id;
     @OneToOne
-    private User user;
+    private Person person;
 }

@@ -1,6 +1,7 @@
 package com.codecool.samu.codecoolinterview.dbTarget.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
 
 @Entity
 @Table(name = "student")
@@ -9,16 +10,16 @@ public class Student {
     @GeneratedValue
     private long id;
     @OneToOne
-    private User user;
+    private Person person;
 
     public Student() {}
 
-    public Student(User user) {
-        this.user = user;
+    public Student(Person person) {
+        this.person = person;
     }
 
     public long getId() {
-        return user.getId();
+        return person.getId();
     }
 
 }

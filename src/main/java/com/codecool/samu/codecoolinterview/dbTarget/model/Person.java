@@ -3,8 +3,8 @@ package com.codecool.samu.codecoolinterview.dbTarget.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "person")
+public class Person {
     @Id
     @GeneratedValue
     private long id;
@@ -12,10 +12,18 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    public User() {
+    public Person() {
     }
 
     public long getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
