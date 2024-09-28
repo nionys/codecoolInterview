@@ -1,7 +1,7 @@
 package com.codecool.samu.codecoolinterview.controller;
 
 import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
-import com.codecool.samu.codecoolinterview.service.SourceService;
+import com.codecool.samu.codecoolinterview.service.source.SourceService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.codecool.samu.codecoolinterview.controller;
 
 import com.codecool.samu.codecoolinterview.dbTarget.model.Student;
-import com.codecool.samu.codecoolinterview.service.TargetService;
+import com.codecool.samu.codecoolinterview.service.target.StudentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,30 +9,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/target")
 public class TargetController {
+    @RestController
+    @RequestMapping("/student")
+    public static class StudentController {
+        private StudentService studentService;
+        public StudentController(StudentService studentService) {
+            this.studentService = studentService;
+        }
 
-    private TargetService targetService;
+        @GetMapping("/all")
+        public List<Student> getAllStudents() {
+            return studentService.findAllStudents();
+        }
 
-    public TargetController(TargetService targetService) {
-        this.targetService = targetService;
-    }
+        @PostMapping("/")
+        public long addStudent(@RequestBody Student student) {
+            return studentService.addStudent(student);
+        }
 
-    @GetMapping("/ping")
-    public String ping() {
-        return targetService.ping();
-    }
-
-    @PostMapping("/student")
-    public long addStudent(@RequestBody Student student) {
-        return targetService.addStudent(student);
-    }
-
-    @GetMapping("/student/all")
-    public List<Student> getAllStudents() {
-        return targetService.getAllStudents();
-    }
-
-    @GetMapping("/student/{name}")
-    public Student getStudent(@PathVariable String name) {
-        return targetService.getStudent(name);
+        @GetMapping("/{id}")
+        public Student getStudentById(@PathVariable long id) {
+            return studentService.findStudentById(id);
+        }
     }
 }

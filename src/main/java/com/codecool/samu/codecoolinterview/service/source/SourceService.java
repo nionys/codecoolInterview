@@ -1,4 +1,4 @@
-package com.codecool.samu.codecoolinterview.service;
+package com.codecool.samu.codecoolinterview.service.source;
 
 import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
 import com.codecool.samu.codecoolinterview.dbSource.repository.JsonRecordRepository;
