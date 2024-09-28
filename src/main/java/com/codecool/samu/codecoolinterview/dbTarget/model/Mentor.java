@@ -3,9 +3,11 @@ package com.codecool.samu.codecoolinterview.dbTarget.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "mentos")
+@Table(name = "mentor")
 public class Mentor {
     @Id
+    @GeneratedValue
+    private long id;
     @OneToOne
     private User user;
 }

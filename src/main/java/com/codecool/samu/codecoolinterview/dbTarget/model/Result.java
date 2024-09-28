@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "result", uniqueConstraints = { @UniqueConstraint(columnNames = { "heldExam", "dimension" }) })
 public class Result {
     @Id
+    @GeneratedValue
     private long id;
     @ManyToOne
     private HeldExam heldExam;

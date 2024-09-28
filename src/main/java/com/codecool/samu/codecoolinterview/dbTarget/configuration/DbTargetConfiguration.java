@@ -1,7 +1,7 @@
 package com.codecool.samu.codecoolinterview.dbTarget.configuration;
 
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.Student;
+import com.codecool.samu.codecoolinterview.dbTarget.model.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -41,7 +41,12 @@ public class DbTargetConfiguration {
         return builder
             .dataSource(dataSource)
             .packages(
-                Student.class
+                User.class,
+                Student.class,
+                Mentor.class,
+                Exam.class,
+                HeldExam.class,
+                Result.class
             )
             .build();
     }

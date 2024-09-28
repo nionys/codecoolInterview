@@ -1,27 +1,11 @@
-GET http://localhost:8080/target/student/all
-
+GET http://localhost:8080/target/user/all
 ###
-
-POST http://localhost:8080/target/student
+POST http://localhost:8080/target/user/
 Content-Type: application/json
 
 {
-  "name": "asd"
+  "name": "Samu",
+  "email": "asd@asd.com"
 }
-
 ###
-
-GET http://localhost:8080/source/record/all
-
-###
-
-POST http://localhost:8080/source/record
-Content-Type: application/json
-
-{
-  "json": "{ \"module\": \"ProgBasics\", \"mentor\": \"peter.szarka@codecool.com\", \"student\": \"foo@bar.com\", \"date\": \"2024-02-01\", \"cancelled\": true, \"comment\": \"Foo was sick.\" }"
-}
-
-###
-
-GET http://localhost:8080/source/record/402
+GET http://localhost:8080/target/user/name/Samu

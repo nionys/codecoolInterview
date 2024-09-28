@@ -9,6 +9,8 @@ import java.util.Objects;
 @Table(name = "held_exam")
 public class HeldExam {
     @Id
+    @GeneratedValue
+    private long id;
     @OneToOne
     private Exam exam;
     private boolean successful;
