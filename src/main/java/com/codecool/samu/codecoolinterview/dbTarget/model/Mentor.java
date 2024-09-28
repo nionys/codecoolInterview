@@ -10,4 +10,17 @@ public class Mentor {
     private long id;
     @OneToOne
     private Person person;
+
+    public Mentor() {}
+    public Mentor(Person person) {
+        this.person = person;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
 }

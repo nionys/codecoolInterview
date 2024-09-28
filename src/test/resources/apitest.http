@@ -5,7 +5,7 @@ Content-Type: application/json
 
 {
   "name": "Samu2",
-  "email": "asd2@asd.com"
+  "email": "asd3@asd.com"
 }
 ###
 GET http://localhost:8080/target/person/email/asd2@asd.com
