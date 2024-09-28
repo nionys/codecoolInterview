@@ -19,5 +19,9 @@ POST http://localhost:8080/source/record
 Content-Type: application/json
 
 {
-  "json": "{\"asd\":2}"
+  "json": "{ \"module\": \"ProgBasics\", \"mentor\": \"peter.szarka@codecool.com\", \"student\": \"foo@bar.com\", \"date\": \"2024-02-01\", \"cancelled\": true, \"comment\": \"Foo was sick.\" }"
 }
+
+###
+
+GET http://localhost:8080/source/record/402

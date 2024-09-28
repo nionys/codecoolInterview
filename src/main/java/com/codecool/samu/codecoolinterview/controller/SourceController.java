@@ -20,6 +20,11 @@ public class SourceController {
         return sourceService.getAllRecords();
     }
 
+    @GetMapping("/record/{id}")
+    public JsonRecord getRecordById(@PathVariable int id) {
+        return sourceService.getRecordById(id);
+    }
+
     @PostMapping("/record")
     public long addRecord(@RequestBody JsonRecord record) {
         return sourceService.addRecord(record);
