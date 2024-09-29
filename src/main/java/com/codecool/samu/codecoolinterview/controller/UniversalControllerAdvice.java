@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @ControllerAdvice
-public class UniverslControllerAdvice {
+public class UniversalControllerAdvice {
     @ExceptionHandler({
         NoSuchStudentException.class,
         NoSuchPersonException.class,

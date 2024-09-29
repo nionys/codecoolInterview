@@ -1,48 +1,46 @@
 package com.codecool.samu.codecoolinterview.service;
 
 import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
-import com.codecool.samu.codecoolinterview.dbTarget.repository.ExamRepository;
+import com.codecool.samu.codecoolinterview.dbTarget.model.Exam;
+import com.codecool.samu.codecoolinterview.dto.CopyResult;
 import com.codecool.samu.codecoolinterview.dto.jacksonObject.ExamDto;
-import com.codecool.samu.codecoolinterview.exception.SourceJsonFormatException;
 import com.codecool.samu.codecoolinterview.service.source.SourceService;
 import com.codecool.samu.codecoolinterview.service.target.ExamService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CopyService {
     private int skip = 0;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
-    private ExamService examService;
-    private SourceService sourceService;
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ExamService examService;
+    private final SourceService sourceService;
     public CopyService(ExamService examService, SourceService sourceService) {
         this.examService = examService;
         this.sourceService = sourceService;
     }
 
-    public void copy() {
-        RuntimeException firstException = null;
+    public List<CopyResult> copy() {
+        List<CopyResult> copyResults = new ArrayList<>();
         List<JsonRecord> unreadRecords = sourceService.getAllRecordsWithSkip(skip);
-        skip += unreadRecords.size();
         for (JsonRecord record : unreadRecords) {
-            ExamDto newExam;
+            ExamDto exam;
             try {
-                newExam = objectMapper.readValue(record.getJson(), ExamDto.class);
+                exam = objectMapper.readValue(record.getJson(), ExamDto.class);
             } catch (JsonProcessingException e) {
-                if (firstException == null) {
-                    firstException = new SourceJsonFormatException(e.getMessage());
-                }
+                copyResults.add(new CopyResult(false, e.getMessage(), null));
+                skip++;
                 continue;
             }
-            examService.saveExam(newExam);
+            ExamDto newExamDto = examService.saveExam(exam);
+            skip++;
+            copyResults.add(new CopyResult(true, "success", newExamDto));
         }
-        if (firstException != null) {
-            throw firstException;
-        }
+        return copyResults;
     }
 }

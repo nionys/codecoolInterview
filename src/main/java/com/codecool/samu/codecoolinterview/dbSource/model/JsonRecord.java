@@ -1,10 +1,8 @@
 package com.codecool.samu.codecoolinterview.dbSource.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.CurrentTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

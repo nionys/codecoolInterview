@@ -7,11 +7,12 @@ import com.codecool.samu.codecoolinterview.dto.jacksonObject.ResultDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HeldExamService {
-    private HeldExamRepository heldExamRepository;
-    private ResultService resultService;
+    private final HeldExamRepository heldExamRepository;
+    private final ResultService resultService;
     public HeldExamService(HeldExamRepository heldExamRepository, ResultService resultService) {
         this.heldExamRepository = heldExamRepository;
         this.resultService = resultService;
@@ -27,5 +28,9 @@ public class HeldExamService {
             resultService.addResult(heldExam, result);
         }
         return newHeldExam;
+    }
+
+    public Optional<HeldExam> findByExamId(long examId) {
+        return heldExamRepository.findByExamId(examId);
     }
 }

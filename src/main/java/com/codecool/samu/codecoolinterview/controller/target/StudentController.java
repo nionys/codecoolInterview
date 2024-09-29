@@ -1,7 +1,9 @@
 package com.codecool.samu.codecoolinterview.controller.target;
 
 import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
-import com.codecool.samu.codecoolinterview.dbTarget.model.Student;
+import com.codecool.samu.codecoolinterview.dto.NewStudentDto;
+import com.codecool.samu.codecoolinterview.dto.PersonDto;
+import com.codecool.samu.codecoolinterview.dto.StudentDto;
 import com.codecool.samu.codecoolinterview.service.target.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/target/student")
 public class StudentController {
-    private StudentService studentService;
+    private final StudentService studentService;
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
@@ -21,17 +23,17 @@ public class StudentController {
     }
 
     @GetMapping("/all")
-    public List<Person> getAllStudents() {
-        return studentService.getAllStudentsAsPersons();
+    public List<StudentDto> getAllStudents() {
+        return studentService.findAllStudents();
     }
 
     @GetMapping("/id/{id}")
-    public Student getStudentById(@PathVariable long id) {
+    public StudentDto getStudentById(@PathVariable long id) {
         return studentService.getStudentById(id);
     }
 
     @PostMapping("")
-    public long createStudent(@RequestBody Person person) {
+    public NewStudentDto createStudent(@RequestBody PersonDto person) {
         return studentService.createStudent(person);
     }
 }

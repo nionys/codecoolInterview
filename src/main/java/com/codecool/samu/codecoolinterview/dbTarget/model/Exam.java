@@ -3,7 +3,6 @@ package com.codecool.samu.codecoolinterview.dbTarget.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Entity
 @Table(name = "exam")
@@ -32,4 +31,23 @@ public class Exam {
         return id;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public Mentor getMentor() {
+        return mentor;
+    }
+
+    public String getModule() {
+        return module;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getComment() {
+        return comment;
+    }
 }

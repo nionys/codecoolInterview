@@ -1,7 +1,6 @@
 package com.codecool.samu.codecoolinterview.dbSource.configuration;
 
 import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
-import com.codecool.samu.codecoolinterview.dbTarget.model.Student;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;

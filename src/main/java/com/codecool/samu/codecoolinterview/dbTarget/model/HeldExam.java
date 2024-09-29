@@ -2,9 +2,6 @@ package com.codecool.samu.codecoolinterview.dbTarget.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-import java.util.Objects;
-
 @Entity
 @Table(name = "held_exam")
 public class HeldExam {
@@ -19,5 +16,17 @@ public class HeldExam {
     public HeldExam(Exam exam, boolean successful) {
         this.exam = exam;
         this.successful = successful;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public boolean isSuccessful() {
+        return successful;
     }
 }

@@ -1,6 +1,7 @@
 package com.codecool.samu.codecoolinterview.controller.source;
 
 import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
+import com.codecool.samu.codecoolinterview.dto.NewJsonRecordDto;
 import com.codecool.samu.codecoolinterview.service.source.SourceService;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +33,10 @@ public class SourceController {
     }
 
     @PostMapping("/record")
-    public long addRecord(@RequestBody String json) {
-        return sourceService.addRecord(new JsonRecord(json));
+    public NewJsonRecordDto addRecord(@RequestBody String json) {
+        JsonRecord newJsonRecord = sourceService.addRecord(new JsonRecord(json));
+        return new NewJsonRecordDto(newJsonRecord.getId(), newJsonRecord.getTime());
+
     }
 
 }

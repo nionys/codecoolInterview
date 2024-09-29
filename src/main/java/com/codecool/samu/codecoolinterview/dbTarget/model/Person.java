@@ -18,6 +18,11 @@ public class Person {
         this.name = name;
         this.email = email;
     }
+    public Person(long id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
 
     public long getId() {
         return id;

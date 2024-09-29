@@ -1,7 +1,6 @@
 package com.codecool.samu.codecoolinterview.dbTarget.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
 
 @Entity
 @Table(name = "student")

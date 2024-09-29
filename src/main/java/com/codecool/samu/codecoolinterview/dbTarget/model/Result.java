@@ -19,4 +19,12 @@ public class Result {
         this.dimension = dimension;
         this.percentage = percentage;
     }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public int getPercentage() {
+        return percentage;
+    }
 }
