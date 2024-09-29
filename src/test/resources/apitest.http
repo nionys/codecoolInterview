@@ -1,14 +1,84 @@
 POST http://localhost:8080/source/record
 
-{ "module": "ProgBasics", "mentor": "peter.szarka@codecool.com", "student": "foo@bar.com", "date": "2024-02-01", "cancelled": true, "comment": "Foo was sick." }
-###
-POST http://localhost:8080/source/record
-
 { "module": "ProgBasics"}
 ###
 POST http://localhost:8080/source/record
 
-{ "module": "Web", "mentor": "peter.szarka@codecool.com", "student": "foo@bar.com", "date": "2024-05-21", "cancelled": false, "success": false, "comment": "Wrote spaghetti code, and tried to sell it. Nice page, though.", "results": [{ "dimension": "Coding", "result": 20 }, {"dimension": "HTML", "result": 100}, {"dimension": "Communication", "result": 80}] }
+{
+  "module": "ProgBasics",
+  "mentor": "peter.szarka@codecool.com",
+  "student": "foo@bar.com",
+  "date": "2024-02-01",
+  "cancelled": true,
+  "comment": "Foo was sick."
+}
+###
+POST http://localhost:8080/source/record
+
+{
+  "module": "Web",
+  "mentor": "peter.szarka@codecool.com",
+  "student": "foo@bar.com",
+  "date": "2024-05-21",
+  "cancelled": false,
+  "success": false,
+  "comment": "Wrote spaghetti code, and tried to sell it. Nice page, though.",
+  "results": [
+    { "dimension": "Coding", "result": 20 },
+    {"dimension": "HTML", "result": 100},
+    {"dimension": "Communication", "result": 80}
+  ]
+}
+###
+POST http://localhost:8080/source/record
+
+{
+  "module": "Web",
+  "mentor": "peter.szarka@codecool.com",
+  "student": "foo@bar.com",
+  "date": "2024-06-01",
+  "cancelled" : false,
+  "success": true,
+  "comment": "passed",
+  "results": [
+    { "dimension": "Coding", "result": 100 },
+    { "dimension": "HTML", "result": 90 },
+    { "dimension": "Communication", "result": 70 }
+  ]
+}
+###
+POST http://localhost:8080/source/record
+
+{
+  "module": "OOP",
+  "mentor": "peter.szarka@codecool.com",
+  "student": "foo@bar.com",
+  "date": "2024-06-01",
+  "cancelled" : false,
+  "success": true,
+  "comment": "passed",
+  "results": [
+    { "dimension": "OOP", "result": 60 },
+    { "dimension": "java", "result": 70 },
+    { "dimension": "Communication", "result": 80 }
+  ]
+}
+###
+POST http://localhost:8080/source/record
+
+{
+  "module": "OOP",
+  "mentor": "peter.szarka@codecool.com",
+  "student": "foo@bar.com",
+  "date": "2024-06-01",
+  "cancelled" : false,
+  "success": true,
+  "comment": "passed",
+  "results": [
+    { "dimension": "java", "result": 100 },
+    { "dimension": "Communication", "result": 100 }
+  ]
+}
 ###
 GET http://localhost:8080/source/record/all
 ###
@@ -18,6 +88,14 @@ Content-Type: application/json
 {
   "name": "Samu",
   "email": "foo@bar.com"
+}
+###
+POST http://localhost:8080/target/student
+Content-Type: application/json
+
+{
+  "name": "Nem Samu",
+  "email": "notfoo@bar.com"
 }
 ###
 GET http://localhost:8080/target/student/all
@@ -32,7 +110,8 @@ Content-Type: application/json
   "email": "peter.szarka@codecool.com"
 }
 ###
-
 POST http://localhost:8080/copy
 ###
+GET http://localhost:8080/aggregate/test
+
 
