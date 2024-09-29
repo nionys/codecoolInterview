@@ -2,9 +2,10 @@ package com.codecool.samu.codecoolinterview.service.source;
 
 import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
 import com.codecool.samu.codecoolinterview.dbSource.repository.JsonRecordRepository;
-import com.codecool.samu.codecoolinterview.jacksonObject.Exam;
+import com.codecool.samu.codecoolinterview.dto.jacksonObject.ExamDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.domain.ScrollPosition;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,15 @@ public class SourceService {
     }
 
     public List<JsonRecord> getAllRecords() {
-        return jsonRecordRepository.findAll();
+        return jsonRecordRepository.findAllByOrderByTimeAsc();
+    }
+
+    public List<JsonRecord> getAllRecordsWithSkip(int skip) {
+        if (skip == 0) {
+            return jsonRecordRepository.findAllByOrderByTimeAsc();
+        } else {
+            return jsonRecordRepository.findAllByOrderByTimeAsc(ScrollPosition.offset(skip-1));
+        }
     }
 
     public long addRecord(JsonRecord record) {
@@ -31,9 +40,9 @@ public class SourceService {
     public JsonRecord getRecordById(long id) {
         JsonRecord record = jsonRecordRepository.findById(id)
             .orElseThrow(() -> new NoSuchElementException("Record not found"));
-        Exam exam;
+        ExamDto examDto;
         try {
-            exam = objectMapper.readValue(record.getJson(), Exam.class);
+            examDto = objectMapper.readValue(record.getJson(), ExamDto.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

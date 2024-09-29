@@ -1,12 +1,12 @@
-package com.codecool.samu.codecoolinterview.jacksonObject;
+package com.codecool.samu.codecoolinterview.dto.jacksonObject;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Result {
+public class ResultDto {
     private String dimension;
     private int percentage;
 
-    public Result(
+    public ResultDto(
         @JsonProperty(value = "dimension", required = true) String dimension,
         @JsonProperty(value = "result", required = true) int percentage) {
         this.dimension = dimension;

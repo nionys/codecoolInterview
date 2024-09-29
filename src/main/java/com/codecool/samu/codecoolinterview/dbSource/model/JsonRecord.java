@@ -16,9 +16,13 @@ public class JsonRecord{
     @Column(insertable = false, updatable = false)
     @CurrentTimestamp
     private LocalDateTime time;
+    @Column(length = 511)
     private String json;
 
     public JsonRecord() {}
+    public JsonRecord(String json) {
+        this.json = json;
+    }
 
     public long getId() {
         return id;

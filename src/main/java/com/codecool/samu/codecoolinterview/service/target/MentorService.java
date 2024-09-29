@@ -23,16 +23,20 @@ public class MentorService {
         this.personRepository = personRepository;
     }
 
-    public List<Person> getAllMentors() {
+    public List<Person> getAllMentorsAsPersons() {
         return mentorRepository.findAll().stream()
             .map(Mentor::getPerson)
             .toList();
     }
 
-    public Person getMentorById(long id) {
+    public Mentor getMentorById(long id) {
         return mentorRepository.findById(id)
-            .orElseThrow(() -> new NoSuchStudentException(id))
-            .getPerson();
+            .orElseThrow(() -> new NoSuchStudentException(id));
+    }
+
+    public Mentor getMentorByEmail(String email) {
+        return mentorRepository.findByPersonEmail(email)
+            .orElseThrow(() -> new NoSuchStudentException(email));
     }
 
     public long promoteToMentor(String email) {

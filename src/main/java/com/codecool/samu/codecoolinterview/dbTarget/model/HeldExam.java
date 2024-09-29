@@ -14,4 +14,10 @@ public class HeldExam {
     @OneToOne
     private Exam exam;
     private boolean successful;
+
+    public HeldExam() {}
+    public HeldExam(Exam exam, boolean successful) {
+        this.exam = exam;
+        this.successful = successful;
+    }
 }

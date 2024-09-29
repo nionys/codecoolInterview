@@ -1,4 +1,4 @@
-package com.codecool.samu.codecoolinterview.jacksonObject;
+package com.codecool.samu.codecoolinterview.dto.jacksonObject;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,39 +6,43 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 import java.util.List;
 
-public class Exam {
+public class ExamDto {
     private String module;
-    private String mentor;
-    private String student;
+    private String mentorEmail;
+    private String studentEmail;
     private Date date;
     private boolean cancelled;
     private Boolean success = null;
-    private List<Result> results = null;
+    private List<ResultDto> resultDtos = null;
     private String comment;
 
     @JsonCreator
-    public Exam(
+    public ExamDto(
         @JsonProperty(value = "module", required = true) String module,
-        @JsonProperty(value = "mentor", required = true) String mentor,
-        @JsonProperty(value = "student", required = true) String student,
+        @JsonProperty(value = "mentor", required = true) String mentorEmail,
+        @JsonProperty(value = "student", required = true) String studentEmail,
         @JsonProperty(value = "date", required = true) Date date,
         @JsonProperty(value = "cancelled", required = true) boolean cancelled,
         @JsonProperty(value = "comment", required = true) String comment,
         @JsonProperty(value = "success") Boolean success,
-        @JsonProperty(value = "results") List<Result> results) {
+        @JsonProperty(value = "results") List<ResultDto> resultDtos) {
         if (cancelled) {
-            if (success != null) throw new IllegalArgumentException("Cancelled record has success field");
-            if (results != null) throw new IllegalArgumentException("Cancelled record has results field");
+            if (success != null) throw new IllegalArgumentException("Cancelled exam record has success field");
+            if (resultDtos != null) throw new IllegalArgumentException("Cancelled exam record has results field");
         }
         this.module = module;
-        this.mentor = mentor;
-        this.student = student;
+        this.mentorEmail = mentorEmail;
+        this.studentEmail = studentEmail;
         this.date = date;
         this.cancelled = cancelled;
         this.success = success;
-        this.results = results;
+        this.resultDtos = resultDtos;
         this.comment = comment;
     }
+    public boolean isHeld() {
+        return !cancelled;
+    }
+
 
     public String getModule() {
         return module;
@@ -48,20 +52,20 @@ public class Exam {
         this.module = module;
     }
 
-    public String getMentor() {
-        return mentor;
+    public String getMentorEmail() {
+        return mentorEmail;
     }
 
-    public void setMentor(String mentor) {
-        this.mentor = mentor;
+    public void setMentorEmail(String mentorEmail) {
+        this.mentorEmail = mentorEmail;
     }
 
-    public String getStudent() {
-        return student;
+    public String getStudentEmail() {
+        return studentEmail;
     }
 
-    public void setStudent(String student) {
-        this.student = student;
+    public void setStudentEmail(String studentEmail) {
+        this.studentEmail = studentEmail;
     }
 
     public Date getDate() {
@@ -88,12 +92,12 @@ public class Exam {
         this.success = success;
     }
 
-    public List<Result> getResults() {
-        return results;
+    public List<ResultDto> getResults() {
+        return resultDtos;
     }
 
-    public void setResults(List<Result> results) {
-        this.results = results;
+    public void setResults(List<ResultDto> resultDtos) {
+        this.resultDtos = resultDtos;
     }
 
     public String getComment() {

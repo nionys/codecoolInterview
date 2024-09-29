@@ -1,6 +1,7 @@
 package com.codecool.samu.codecoolinterview.controller.target;
 
 import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
+import com.codecool.samu.codecoolinterview.dbTarget.model.Student;
 import com.codecool.samu.codecoolinterview.service.target.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +22,11 @@ public class StudentController {
 
     @GetMapping("/all")
     public List<Person> getAllStudents() {
-        return studentService.getAllStudents();
+        return studentService.getAllStudentsAsPersons();
     }
 
     @GetMapping("/id/{id}")
-    public Person getStudentById(@PathVariable long id) {
+    public Student getStudentById(@PathVariable long id) {
         return studentService.getStudentById(id);
     }
 

@@ -26,11 +26,11 @@ public class PersonService {
         return savedPerson.getId();
     }
 
-    public List<Person> getAllPersons() {
+    public List<Person> findAllPersons() {
         return personRepository.findAll();
     }
 
-    public Person getUserById(long id) {
+    public Person findById(long id) {
         return personRepository.findById(id).orElseThrow(() -> new NoSuchPersonException(id));
     }
 

@@ -23,16 +23,20 @@ public class StudentService {
         this.personRepository = personRepository;
     }
 
-    public List<Person> getAllStudents() {
+    public List<Person> getAllStudentsAsPersons() {
        return studentRepository.findAll().stream()
            .map(Student::getPerson)
            .toList();
     }
 
-    public Person getStudentById(long id) {
+    public Student getStudentById(long id) {
         return studentRepository.findById(id)
-            .orElseThrow(() -> new NoSuchStudentException(id))
-            .getPerson();
+            .orElseThrow(() -> new NoSuchStudentException(id));
+    }
+
+    public Student getStudentByEmail(String email) {
+        return studentRepository.findByPersonEmail(email)
+            .orElseThrow(() -> new NoSuchStudentException(email));
     }
 
     public long promoteToStudent(String email) {

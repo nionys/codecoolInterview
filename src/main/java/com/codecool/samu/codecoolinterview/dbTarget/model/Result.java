@@ -11,5 +11,12 @@ public class Result {
     @ManyToOne
     private HeldExam heldExam;
     private String dimension;
-    private String percentage;
+    private int percentage;
+
+    public Result() {}
+    public Result(HeldExam heldExam, String dimension, int percentage) {
+        this.heldExam = heldExam;
+        this.dimension = dimension;
+        this.percentage = percentage;
+    }
 }

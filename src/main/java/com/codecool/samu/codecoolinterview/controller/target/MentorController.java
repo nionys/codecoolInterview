@@ -1,6 +1,7 @@
 package com.codecool.samu.codecoolinterview.controller.target;
 
 
+import com.codecool.samu.codecoolinterview.dbTarget.model.Mentor;
 import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
 import com.codecool.samu.codecoolinterview.service.target.MentorService;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +23,11 @@ public class MentorController {
 
     @GetMapping("/all")
     public List<Person> getAllMentors() {
-        return mentorService.getAllMentors();
+        return mentorService.getAllMentorsAsPersons();
     }
 
     @GetMapping("/id/{id}")
-    public Person getMentorById(@PathVariable long id) {
+    public Mentor getMentorById(@PathVariable long id) {
         return mentorService.getMentorById(id);
     }
 

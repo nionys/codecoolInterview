@@ -16,7 +16,7 @@ public class PersonController {
 
     @GetMapping("/all")
     public List<Person> getAllUsers() {
-        return personService.getAllPersons();
+        return personService.findAllPersons();
     }
 
     @PostMapping("")
@@ -26,7 +26,7 @@ public class PersonController {
 
     @GetMapping("/id/{id}")
     public Person getStudentById(@PathVariable long id) {
-        return personService.getUserById(id);
+        return personService.findById(id);
     }
 
     @GetMapping("/email/{email}")

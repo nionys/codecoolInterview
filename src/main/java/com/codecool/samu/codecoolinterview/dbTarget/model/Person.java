@@ -14,6 +14,10 @@ public class Person {
 
     public Person() {
     }
+    public Person(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 
     public long getId() {
         return id;

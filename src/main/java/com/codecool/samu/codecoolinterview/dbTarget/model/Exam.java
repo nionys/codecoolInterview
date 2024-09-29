@@ -18,4 +18,18 @@ public class Exam {
     private String module;
     private LocalDate date;
     private String comment;
+
+    public Exam() {}
+    public Exam(Student student, Mentor mentor, String module, LocalDate date, String comment) {
+        this.student = student;
+        this.mentor = mentor;
+        this.module = module;
+        this.date = date;
+        this.comment = comment;
+    }
+
+    public long getId() {
+        return id;
+    }
+
 }

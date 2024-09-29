@@ -1,25 +1,34 @@
-GET http://localhost:8080/target/person/all
-###
-POST http://localhost:8080/target/person
-Content-Type: application/json
+POST http://localhost:8080/source/record
 
-{
-  "name": "Samu2",
-  "email": "asd3@asd.com"
-}
+{ "module": "ProgBasics", "mentor": "peter.szarka@codecool.com", "student": "foo@bar.com", "date": "2024-02-01", "cancelled": true, "comment": "Foo was sick." }
 ###
-GET http://localhost:8080/target/person/email/asd2@asd.com
-###
-GET http://localhost:8080/target/student/all
-###
-POST http://localhost:8080/target/student/promote
+POST http://localhost:8080/source/record
 
-asd2@asd.com
+{ "module": "ProgBasics"}
+###
+POST http://localhost:8080/source/record
+
+{ "module": "Web", "mentor": "peter.szarka@codecool.com", "student": "foo@bar.com", "date": "2024-05-21", "cancelled": false, "success": false, "comment": "Wrote spaghetti code, and tried to sell it. Nice page, though.", "results": [{ "dimension": "Coding", "result": 20 }, {"dimension": "HTML", "result": 100}, {"dimension": "Communication", "result": 80}] }
+###
+GET http://localhost:8080/source/record/all/skip/2
 ###
 POST http://localhost:8080/target/student
 Content-Type: application/json
 
 {
-  "name": "STUDENT 1",
-  "email": "student@email.com"
+  "name": "Samu",
+  "email": "foo@bar.com"
 }
+###
+POST http://localhost:8080/target/mentor
+Content-Type: application/json
+
+{
+  "name": "Szarka Péter",
+  "email": "peter.szarka@codecool.com"
+}
+###
+
+POST http://localhost:8080/copy
+###
+
