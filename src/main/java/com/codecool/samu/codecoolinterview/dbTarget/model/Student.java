@@ -18,7 +18,7 @@ public class Student {
     }
 
     public long getId() {
-        return person.getId();
+        return id;
     }
 
     public Person getPerson() {

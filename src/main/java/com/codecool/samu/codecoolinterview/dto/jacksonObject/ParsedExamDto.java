@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 import java.util.List;
 
-public class ExamDto {
+public class ParsedExamDto {
     private String module;
     private String mentorEmail;
     private String studentEmail;
@@ -17,7 +17,7 @@ public class ExamDto {
     private String comment;
 
     @JsonCreator
-    public ExamDto(
+    public ParsedExamDto(
         @JsonProperty(value = "module", required = true) String module,
         @JsonProperty(value = "mentor", required = true) String mentorEmail,
         @JsonProperty(value = "student", required = true) String studentEmail,

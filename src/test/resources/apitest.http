@@ -10,7 +10,7 @@ POST http://localhost:8080/source/record
 
 { "module": "Web", "mentor": "peter.szarka@codecool.com", "student": "foo@bar.com", "date": "2024-05-21", "cancelled": false, "success": false, "comment": "Wrote spaghetti code, and tried to sell it. Nice page, though.", "results": [{ "dimension": "Coding", "result": 20 }, {"dimension": "HTML", "result": 100}, {"dimension": "Communication", "result": 80}] }
 ###
-GET http://localhost:8080/source/record/all/skip/2
+GET http://localhost:8080/source/record/all
 ###
 POST http://localhost:8080/target/student
 Content-Type: application/json
@@ -19,6 +19,10 @@ Content-Type: application/json
   "name": "Samu",
   "email": "foo@bar.com"
 }
+###
+GET http://localhost:8080/target/student/all
+###
+GET http://localhost:8080/target/student/id/252
 ###
 POST http://localhost:8080/target/mentor
 Content-Type: application/json
