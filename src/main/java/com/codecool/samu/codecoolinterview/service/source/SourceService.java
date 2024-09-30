@@ -1,7 +1,8 @@
 package com.codecool.samu.codecoolinterview.service.source;
 
-import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
-import com.codecool.samu.codecoolinterview.dbSource.repository.JsonRecordRepository;
+import com.codecool.samu.codecoolinterview.model.dto.NewJsonRecordDto;
+import com.codecool.samu.codecoolinterview.model.entity.source.JsonRecord;
+import com.codecool.samu.codecoolinterview.repository.source.JsonRecordRepository;
 import org.springframework.data.domain.ScrollPosition;
 import org.springframework.stereotype.Service;
 
@@ -28,13 +29,18 @@ public class SourceService {
         }
     }
 
-    public JsonRecord addRecord(JsonRecord record) {
-        return jsonRecordRepository.save(record);
+    public NewJsonRecordDto addRecord(String record) {
+        JsonRecord newJsonRecord = jsonRecordRepository.save(new JsonRecord(record));
+        return new NewJsonRecordDto(newJsonRecord.getId(), newJsonRecord.getTime());
     }
 
     public JsonRecord getRecordById(long id) {
         return jsonRecordRepository.findById(id)
             .orElseThrow(() -> new NoSuchElementException("Record not found"));
 
+    }
+
+    public void deleteAll() {
+        jsonRecordRepository.deleteAll();
     }
 }

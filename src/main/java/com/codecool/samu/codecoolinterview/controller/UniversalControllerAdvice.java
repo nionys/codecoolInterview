@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 @ControllerAdvice
 public class UniversalControllerAdvice {
     @ExceptionHandler({
-        NoSuchStudentException.class,
         NoSuchPersonException.class,
         DuplicateEmailException.class,
         PersonIsAlreadyAStudentException.class

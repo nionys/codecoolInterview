@@ -1,9 +1,9 @@
 package com.codecool.samu.codecoolinterview.service.target;
 
-import com.codecool.samu.codecoolinterview.dbTarget.repository.statistics.MentorStatisticsRepository;
-import com.codecool.samu.codecoolinterview.dbTarget.repository.statistics.StudentStatisticsRepository;
-import com.codecool.samu.codecoolinterview.dto.queryObject.MentorQueryObject;
-import com.codecool.samu.codecoolinterview.dto.queryObject.ResultQueryObject;
+import com.codecool.samu.codecoolinterview.repository.target.statistics.MentorStatisticsRepository;
+import com.codecool.samu.codecoolinterview.repository.target.statistics.StatisticsRepository;
+import com.codecool.samu.codecoolinterview.repository.target.statistics.StudentStatisticsRepository;
+import com.codecool.samu.codecoolinterview.model.dto.queryObject.ResultQueryRecord;
 import jakarta.persistence.Tuple;
 import org.springframework.stereotype.Service;
 
@@ -12,21 +12,17 @@ import java.util.Map;
 
 @Service
 public class StatisticsService {
-    private final StudentStatisticsRepository studentStatisticsRepository;
-    private final MentorStatisticsRepository mentorStatisticsRepository;
-    public StatisticsService(
-        StudentStatisticsRepository studentStatisticsRepository,
-        MentorStatisticsRepository mentorStatisticsRepository
-    ) {
-        this.studentStatisticsRepository = studentStatisticsRepository;
-        this.mentorStatisticsRepository = mentorStatisticsRepository;
+    private final StatisticsRepository statisticsRepository;
+
+    public StatisticsService(StatisticsRepository statisticsRepository) {
+        this.statisticsRepository = statisticsRepository;
     }
 
-    public List<ResultQueryObject> calculateAverageResultsByStudent(String studentEmail) {
-        return studentStatisticsRepository.calculateAverageResultsByStudent(studentEmail);
+    public List<ResultQueryRecord> calculateAverageResultsByStudent(String studentEmail) {
+        return statisticsRepository.calculateAverageResultsByStudent(studentEmail);
     }
 
     public List<Map<Tuple, Double>> calculateMentorPassRatePerAttempt() {
-        return mentorStatisticsRepository.calculateMentorPassRatePerAttempt();
+        return statisticsRepository.calculateMentorPassRatePerAttempt();
     }
 }

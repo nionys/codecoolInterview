@@ -1,9 +1,9 @@
 package com.codecool.samu.codecoolinterview.service;
 
-import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
-import com.codecool.samu.codecoolinterview.dto.CopyResult;
-import com.codecool.samu.codecoolinterview.dto.ExamDto;
-import com.codecool.samu.codecoolinterview.dto.jacksonObject.ParsedExamDto;
+import com.codecool.samu.codecoolinterview.model.entity.source.JsonRecord;
+import com.codecool.samu.codecoolinterview.model.dto.CopyResult;
+import com.codecool.samu.codecoolinterview.model.dto.ExamDto;
+import com.codecool.samu.codecoolinterview.model.dto.jacksonObject.ParsedExamDto;
 import com.codecool.samu.codecoolinterview.exception.NoSuchPersonException;
 import com.codecool.samu.codecoolinterview.service.source.SourceService;
 import com.codecool.samu.codecoolinterview.service.target.ExamService;

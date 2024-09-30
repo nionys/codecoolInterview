@@ -1,9 +1,8 @@
 package com.codecool.samu.codecoolinterview.controller.target;
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
-import com.codecool.samu.codecoolinterview.dto.NewStudentDto;
-import com.codecool.samu.codecoolinterview.dto.PersonDto;
-import com.codecool.samu.codecoolinterview.dto.StudentDto;
+import com.codecool.samu.codecoolinterview.model.dto.NewStudentDto;
+import com.codecool.samu.codecoolinterview.model.dto.PersonDto;
+import com.codecool.samu.codecoolinterview.model.dto.StudentDto;
 import com.codecool.samu.codecoolinterview.service.target.StudentService;
 import org.springframework.web.bind.annotation.*;
 

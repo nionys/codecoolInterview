@@ -130,6 +130,6 @@ POST http://localhost:8080/copy
 ###
 GET http://localhost:8080/statistics/average-result/student/email/foo@bar.com
 ###
-GET http://localhost:8080/statistics/mentor-passrates
+GET http://localhost:8080/statistics/mentor-pass-rates
 
 

@@ -1,9 +1,9 @@
 package com.codecool.samu.codecoolinterview.service.target;
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.HeldExam;
-import com.codecool.samu.codecoolinterview.dbTarget.model.Result;
-import com.codecool.samu.codecoolinterview.dbTarget.repository.ResultRepository;
-import com.codecool.samu.codecoolinterview.dto.jacksonObject.ResultDto;
+import com.codecool.samu.codecoolinterview.model.entity.target.HeldExam;
+import com.codecool.samu.codecoolinterview.model.entity.target.Result;
+import com.codecool.samu.codecoolinterview.repository.target.ResultRepository;
+import com.codecool.samu.codecoolinterview.model.dto.jacksonObject.ResultDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +13,10 @@ public class ResultService {
     private final ResultRepository resultRepository;
     public ResultService(ResultRepository resultRepository) {
         this.resultRepository = resultRepository;
+    }
+
+    public void deleteAll() {
+        resultRepository.deleteAll();
     }
 
     public void addResult(HeldExam heldExam, ResultDto result) {

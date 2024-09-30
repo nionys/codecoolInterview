@@ -1,7 +1,7 @@
 package com.codecool.samu.codecoolinterview.controller.source;
 
-import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
-import com.codecool.samu.codecoolinterview.dto.NewJsonRecordDto;
+import com.codecool.samu.codecoolinterview.model.entity.source.JsonRecord;
+import com.codecool.samu.codecoolinterview.model.dto.NewJsonRecordDto;
 import com.codecool.samu.codecoolinterview.service.source.SourceService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,12 +21,6 @@ public class SourceController {
         return sourceService.getAllRecords();
     }
 
-    @GetMapping("/record/all/skip/{skip}")
-    public List<JsonRecord> getAllRecordsWithSkip(@PathVariable int skip) {
-        return sourceService.getAllRecordsWithSkip(skip);
-    }
-
-
     @GetMapping("/record/{id}")
     public JsonRecord getRecordById(@PathVariable int id) {
         return sourceService.getRecordById(id);
@@ -34,8 +28,7 @@ public class SourceController {
 
     @PostMapping("/record")
     public NewJsonRecordDto addRecord(@RequestBody String json) {
-        JsonRecord newJsonRecord = sourceService.addRecord(new JsonRecord(json));
-        return new NewJsonRecordDto(newJsonRecord.getId(), newJsonRecord.getTime());
+        return sourceService.addRecord(json);
 
     }
 

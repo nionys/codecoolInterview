@@ -1,7 +1,7 @@
 package com.codecool.samu.codecoolinterview.controller.target;
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
-import com.codecool.samu.codecoolinterview.dto.PersonDto;
+import com.codecool.samu.codecoolinterview.model.entity.target.Person;
+import com.codecool.samu.codecoolinterview.model.dto.PersonDto;
 import com.codecool.samu.codecoolinterview.service.target.PersonService;
 import org.springframework.web.bind.annotation.*;
 

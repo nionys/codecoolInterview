@@ -1,6 +1,6 @@
 package com.codecool.samu.codecoolinterview.controller;
 
-import com.codecool.samu.codecoolinterview.dto.CopyResult;
+import com.codecool.samu.codecoolinterview.model.dto.CopyResult;
 import com.codecool.samu.codecoolinterview.service.CopyService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

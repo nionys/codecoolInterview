@@ -1,12 +1,15 @@
 package com.codecool.samu.codecoolinterview.service.target;
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.*;
-import com.codecool.samu.codecoolinterview.dbTarget.repository.ExamRepository;
-import com.codecool.samu.codecoolinterview.dto.ExamDto;
-import com.codecool.samu.codecoolinterview.dto.MentorDto;
-import com.codecool.samu.codecoolinterview.dto.StudentDto;
-import com.codecool.samu.codecoolinterview.dto.jacksonObject.ParsedExamDto;
-import com.codecool.samu.codecoolinterview.dto.jacksonObject.ResultDto;
+import com.codecool.samu.codecoolinterview.repository.target.ExamRepository;
+import com.codecool.samu.codecoolinterview.model.dto.ExamDto;
+import com.codecool.samu.codecoolinterview.model.dto.MentorDto;
+import com.codecool.samu.codecoolinterview.model.dto.StudentDto;
+import com.codecool.samu.codecoolinterview.model.dto.jacksonObject.ParsedExamDto;
+import com.codecool.samu.codecoolinterview.model.dto.jacksonObject.ResultDto;
+import com.codecool.samu.codecoolinterview.model.entity.target.Exam;
+import com.codecool.samu.codecoolinterview.model.entity.target.HeldExam;
+import com.codecool.samu.codecoolinterview.model.entity.target.Mentor;
+import com.codecool.samu.codecoolinterview.model.entity.target.Student;
 import com.codecool.samu.codecoolinterview.util.DateUtil;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,10 @@ public class ExamService {
         this.mentorService = mentorService;
         this.heldExamService = heldExamService;
         this.resultService = resultService;
+    }
+
+    public void deleteAll() {
+        examRepository.deleteAll();
     }
 
     public ExamDto saveExam(ParsedExamDto parsedExamDto) {

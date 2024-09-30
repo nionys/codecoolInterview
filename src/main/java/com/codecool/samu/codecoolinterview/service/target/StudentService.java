@@ -1,12 +1,11 @@
 package com.codecool.samu.codecoolinterview.service.target;
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
-import com.codecool.samu.codecoolinterview.dbTarget.model.Student;
-import com.codecool.samu.codecoolinterview.dbTarget.repository.StudentRepository;
-import com.codecool.samu.codecoolinterview.dto.NewStudentDto;
-import com.codecool.samu.codecoolinterview.dto.PersonDto;
-import com.codecool.samu.codecoolinterview.dto.StudentDto;
-import com.codecool.samu.codecoolinterview.dto.jacksonObject.ResultDto;
+import com.codecool.samu.codecoolinterview.model.entity.target.Person;
+import com.codecool.samu.codecoolinterview.model.entity.target.Student;
+import com.codecool.samu.codecoolinterview.repository.target.StudentRepository;
+import com.codecool.samu.codecoolinterview.model.dto.NewStudentDto;
+import com.codecool.samu.codecoolinterview.model.dto.PersonDto;
+import com.codecool.samu.codecoolinterview.model.dto.StudentDto;
 import com.codecool.samu.codecoolinterview.exception.NoSuchStudentException;
 import com.codecool.samu.codecoolinterview.exception.PersonIsAlreadyAStudentException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -22,6 +21,10 @@ public class StudentService {
     public StudentService(PersonService personService, StudentRepository studentRepository) {
         this.personService = personService;
         this.studentRepository = studentRepository;
+    }
+
+    public void deleteAll() {
+        studentRepository.deleteAll();
     }
 
     public List<StudentDto> findAllStudents() {

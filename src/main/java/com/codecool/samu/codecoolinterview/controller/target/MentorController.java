@@ -1,8 +1,8 @@
 package com.codecool.samu.codecoolinterview.controller.target;
 
-import com.codecool.samu.codecoolinterview.dto.MentorDto;
-import com.codecool.samu.codecoolinterview.dto.NewMentorDto;
-import com.codecool.samu.codecoolinterview.dto.PersonDto;
+import com.codecool.samu.codecoolinterview.model.dto.MentorDto;
+import com.codecool.samu.codecoolinterview.model.dto.NewMentorDto;
+import com.codecool.samu.codecoolinterview.model.dto.PersonDto;
 import com.codecool.samu.codecoolinterview.service.target.MentorService;
 import org.springframework.web.bind.annotation.*;
 

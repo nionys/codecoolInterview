@@ -1,8 +1,8 @@
 package com.codecool.samu.codecoolinterview.service.target;
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
-import com.codecool.samu.codecoolinterview.dbTarget.repository.PersonRepository;
-import com.codecool.samu.codecoolinterview.dto.PersonDto;
+import com.codecool.samu.codecoolinterview.model.entity.target.Person;
+import com.codecool.samu.codecoolinterview.repository.target.PersonRepository;
+import com.codecool.samu.codecoolinterview.model.dto.PersonDto;
 import com.codecool.samu.codecoolinterview.exception.DuplicateEmailException;
 import com.codecool.samu.codecoolinterview.exception.NoSuchPersonException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -15,6 +15,10 @@ public class PersonService {
     private final PersonRepository personRepository;
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
+    }
+
+    public void deleteAll() {
+        personRepository.deleteAll();
     }
 
     public long addPerson(PersonDto personDto) {

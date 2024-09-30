@@ -1,12 +1,12 @@
 package com.codecool.samu.codecoolinterview.service.target;
 
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.Mentor;
-import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
-import com.codecool.samu.codecoolinterview.dbTarget.repository.MentorRepository;
-import com.codecool.samu.codecoolinterview.dto.MentorDto;
-import com.codecool.samu.codecoolinterview.dto.NewMentorDto;
-import com.codecool.samu.codecoolinterview.dto.PersonDto;
+import com.codecool.samu.codecoolinterview.model.entity.target.Mentor;
+import com.codecool.samu.codecoolinterview.model.entity.target.Person;
+import com.codecool.samu.codecoolinterview.repository.target.MentorRepository;
+import com.codecool.samu.codecoolinterview.model.dto.MentorDto;
+import com.codecool.samu.codecoolinterview.model.dto.NewMentorDto;
+import com.codecool.samu.codecoolinterview.model.dto.PersonDto;
 import com.codecool.samu.codecoolinterview.exception.NoSuchMentorException;
 import com.codecool.samu.codecoolinterview.exception.NoSuchStudentException;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,10 @@ public class MentorService {
     public MentorService(PersonService personService, MentorRepository mentorRepository) {
         this.personService = personService;
         this.mentorRepository = mentorRepository;
+    }
+
+    public void deleteAll() {
+        mentorRepository.deleteAll();
     }
 
     public List<MentorDto> getAllMentors() {
