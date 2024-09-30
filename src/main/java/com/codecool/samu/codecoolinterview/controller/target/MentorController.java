@@ -1,11 +1,9 @@
 package com.codecool.samu.codecoolinterview.controller.target;
 
-import com.codecool.samu.codecoolinterview.dbTarget.model.Person;
 import com.codecool.samu.codecoolinterview.dto.MentorDto;
 import com.codecool.samu.codecoolinterview.dto.NewMentorDto;
 import com.codecool.samu.codecoolinterview.dto.PersonDto;
 import com.codecool.samu.codecoolinterview.service.target.MentorService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

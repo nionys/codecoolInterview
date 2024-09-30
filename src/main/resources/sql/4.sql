@@ -2,7 +2,7 @@ SELECT email, examnumber, SUM(successful::int)::decimal/COUNT(*) as passrate
 FROM (
     SELECT
         person.email,
-        RANK () OVER (
+        DENSE_RANK () OVER (
             PARTITION BY exam.module
             ORDER BY exam.date
             ) examnumber,

@@ -15,6 +15,14 @@ POST http://localhost:8080/source/record
 ###
 POST http://localhost:8080/source/record
 
+{ "module": "ProgBasics", "mentor": "peter.szarka@codecool.com", "student": "foo@bar.com", "date": "2024-02-05", "cancelled": false, "success": true, "comment": "Everything was ok.", "results": [{ "dimension": "Coding", "result": 80 }, { "dimension": "Communication", "result": 100}] }
+###
+POST http://localhost:8080/source/record
+
+{ "module": "Web", "mentor": "mano.fabian@codecool.com", "student": "foo@bar.com", "date": "2024-05-11", "cancelled": false, "success": false, "comment": "Couldn't really start, just wrote some HTML.", "results": [{ "dimension": "Coding", "result": 0 }, {"dimension": "HTML", "result": 30}, {"dimension": "Communication", "result": 30}] }
+###
+POST http://localhost:8080/source/record
+
 {
   "module": "Web",
   "mentor": "peter.szarka@codecool.com",
@@ -56,7 +64,7 @@ POST http://localhost:8080/source/record
   "date": "2024-06-01",
   "cancelled" : false,
   "success": true,
-  "comment": "passed",
+  "comment": "passed2",
   "results": [
     { "dimension": "OOP", "result": 60 },
     { "dimension": "java", "result": 70 },
@@ -73,7 +81,7 @@ POST http://localhost:8080/source/record
   "date": "2024-06-01",
   "cancelled" : false,
   "success": true,
-  "comment": "passed",
+  "comment": "passed3",
   "results": [
     { "dimension": "java", "result": 100 },
     { "dimension": "Communication", "result": 100 }
@@ -110,8 +118,18 @@ Content-Type: application/json
   "email": "peter.szarka@codecool.com"
 }
 ###
+POST http://localhost:8080/target/mentor
+Content-Type: application/json
+
+{
+  "name": "Fábián Manó",
+  "email": "mano.fabian@codecool.com"
+}
+###
 POST http://localhost:8080/copy
 ###
-GET http://localhost:8080/aggregate/test
+GET http://localhost:8080/statistics/average-result/student/email/foo@bar.com
+###
+GET http://localhost:8080/statistics/mentor-passrates
 
 

@@ -7,6 +7,7 @@ import com.codecool.samu.codecoolinterview.dbTarget.repository.MentorRepository;
 import com.codecool.samu.codecoolinterview.dto.MentorDto;
 import com.codecool.samu.codecoolinterview.dto.NewMentorDto;
 import com.codecool.samu.codecoolinterview.dto.PersonDto;
+import com.codecool.samu.codecoolinterview.exception.NoSuchMentorException;
 import com.codecool.samu.codecoolinterview.exception.NoSuchStudentException;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class MentorService {
 
     public Mentor getMentorByEmail(String email) {
         return mentorRepository.findByPersonEmail(email)
-            .orElseThrow(() -> new NoSuchStudentException(email));
+            .orElseThrow(() -> new NoSuchMentorException(email));
     }
 
     public long promoteToMentor(String email) {

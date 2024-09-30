@@ -6,6 +6,7 @@ import com.codecool.samu.codecoolinterview.dbTarget.repository.StudentRepository
 import com.codecool.samu.codecoolinterview.dto.NewStudentDto;
 import com.codecool.samu.codecoolinterview.dto.PersonDto;
 import com.codecool.samu.codecoolinterview.dto.StudentDto;
+import com.codecool.samu.codecoolinterview.dto.jacksonObject.ResultDto;
 import com.codecool.samu.codecoolinterview.exception.NoSuchStudentException;
 import com.codecool.samu.codecoolinterview.exception.PersonIsAlreadyAStudentException;
 import org.springframework.dao.DataIntegrityViolationException;

@@ -4,6 +4,7 @@ import com.codecool.samu.codecoolinterview.dbSource.model.JsonRecord;
 import com.codecool.samu.codecoolinterview.dto.CopyResult;
 import com.codecool.samu.codecoolinterview.dto.ExamDto;
 import com.codecool.samu.codecoolinterview.dto.jacksonObject.ParsedExamDto;
+import com.codecool.samu.codecoolinterview.exception.NoSuchPersonException;
 import com.codecool.samu.codecoolinterview.service.source.SourceService;
 import com.codecool.samu.codecoolinterview.service.target.ExamService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -30,14 +31,15 @@ public class CopyService {
         List<JsonRecord> unreadRecords = sourceService.getAllRecordsWithSkip(skip);
         for (JsonRecord record : unreadRecords) {
             ParsedExamDto exam;
+            ExamDto newExamDto;
             try {
                 exam = objectMapper.readValue(record.getJson(), ParsedExamDto.class);
-            } catch (JsonProcessingException e) {
+                newExamDto = examService.saveExam(exam);
+            } catch (JsonProcessingException | NoSuchPersonException e) {
                 copyResults.add(new CopyResult(false, e.getMessage(), null));
                 skip++;
                 continue;
             }
-            ExamDto newExamDto = examService.saveExam(exam);
             skip++;
             copyResults.add(new CopyResult(true, "success", newExamDto));
         }
