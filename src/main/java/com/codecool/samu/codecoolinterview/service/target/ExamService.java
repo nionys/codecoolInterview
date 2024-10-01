@@ -11,6 +11,8 @@ import com.codecool.samu.codecoolinterview.model.entity.target.HeldExam;
 import com.codecool.samu.codecoolinterview.model.entity.target.Mentor;
 import com.codecool.samu.codecoolinterview.model.entity.target.Student;
 import com.codecool.samu.codecoolinterview.util.DateUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -19,6 +21,8 @@ import java.util.List;
 
 @Service
 public class ExamService {
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
     private final ExamRepository examRepository;
     private final StudentService studentService;
     private final MentorService mentorService;
@@ -41,11 +45,13 @@ public class ExamService {
         examRepository.deleteAll();
     }
 
-    public ExamDto saveExam(ParsedExamDto parsedExamDto) {
-        Exam newExam = examRepository.save(convertToExam(parsedExamDto));
+    public ExamDto saveExam(String json) throws JsonProcessingException {
+
+        ParsedExamDto exam = objectMapper.readValue(json, ParsedExamDto.class);
+        Exam newExam = examRepository.save(convertToExam(exam));
         HeldExam heldExam = null;
-        if (parsedExamDto.isHeld()) {
-            heldExam = heldExamService.addHeldExam(newExam, parsedExamDto.getSuccess(), parsedExamDto.getResults());
+        if (exam.isHeld()) {
+            heldExam = heldExamService.addHeldExam(newExam, exam.getSuccess(), exam.getResults());
         }
         return convertToExamDto(newExam, heldExam);
     }
@@ -117,7 +123,6 @@ public class ExamService {
             success,
             results
         );
-
     }
 
     public ParsedExamDto convertToParsedExamDto(Exam exam) {

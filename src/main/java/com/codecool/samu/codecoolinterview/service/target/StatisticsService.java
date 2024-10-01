@@ -1,5 +1,6 @@
 package com.codecool.samu.codecoolinterview.service.target;
 
+import com.codecool.samu.codecoolinterview.model.dto.queryObject.MentorQueryRecord;
 import com.codecool.samu.codecoolinterview.repository.target.statistics.MentorStatisticsRepository;
 import com.codecool.samu.codecoolinterview.repository.target.statistics.StatisticsRepository;
 import com.codecool.samu.codecoolinterview.repository.target.statistics.StudentStatisticsRepository;
@@ -22,7 +23,7 @@ public class StatisticsService {
         return statisticsRepository.calculateAverageResultsByStudent(studentEmail);
     }
 
-    public List<Map<Tuple, Double>> calculateMentorPassRatePerAttempt() {
+    public List<MentorQueryRecord> calculateMentorPassRatePerAttempt() {
         return statisticsRepository.calculateMentorPassRatePerAttempt();
     }
 }

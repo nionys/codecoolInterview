@@ -1,5 +1,6 @@
 package com.codecool.samu.codecoolinterview.controller.target;
 
+import com.codecool.samu.codecoolinterview.model.dto.queryObject.MentorQueryRecord;
 import com.codecool.samu.codecoolinterview.model.dto.queryObject.ResultQueryRecord;
 import com.codecool.samu.codecoolinterview.service.target.StatisticsService;
 import jakarta.persistence.Tuple;
@@ -25,7 +26,7 @@ public class StatisticsController {
     }
 
     @GetMapping("/mentor-pass-rates")
-    public List<Map<Tuple, Double>> calculateMentorPassRatePerAttempt() {
+    public List<MentorQueryRecord> calculateMentorPassRatePerAttempt() {
         return statisticsService.calculateMentorPassRatePerAttempt();
     }
 }

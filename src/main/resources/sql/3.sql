@@ -7,13 +7,13 @@ WITH helper AS (SELECT exam.module, MAX(exam.date) as lastdate
                 GROUP BY exam.module)
 SELECT result.dimension, AVG(result.percentage), count(*)
 FROM result
-    LEFT JOIN held_exam on result.heldexam_id = held_exam.id
-    LEFT JOIN exam on held_exam.exam_id = exam.id
-    RIGHT JOIN helper on exam.module = helper.module
+         LEFT JOIN held_exam on result.heldexam_id = held_exam.id
+         LEFT JOIN exam on held_exam.exam_id = exam.id
+         RIGHT JOIN helper on exam.module = helper.module
 WHERE exam.date = helper.lastdate
-GROUP BY result.dimension
+GROUP BY result.dimension;
 
-;
+
 
 
 

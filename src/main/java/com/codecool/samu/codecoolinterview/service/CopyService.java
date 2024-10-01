@@ -18,7 +18,6 @@ import java.util.List;
 public class CopyService {
     private int skip = 0;
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
     private final ExamService examService;
     private final SourceService sourceService;
     public CopyService(ExamService examService, SourceService sourceService) {
@@ -30,11 +29,9 @@ public class CopyService {
         List<CopyResult> copyResults = new ArrayList<>();
         List<JsonRecord> unreadRecords = sourceService.getAllRecordsWithSkip(skip);
         for (JsonRecord record : unreadRecords) {
-            ParsedExamDto exam;
             ExamDto newExamDto;
             try {
-                exam = objectMapper.readValue(record.getJson(), ParsedExamDto.class);
-                newExamDto = examService.saveExam(exam);
+                newExamDto = examService.saveExam(record.getJson());
             } catch (JsonProcessingException | NoSuchPersonException e) {
                 copyResults.add(new CopyResult(false, e.getMessage(), null));
                 skip++;
