@@ -32,16 +32,19 @@ public class PersonService {
         return savedPerson.getId();
     }
 
-    public List<Person> findAllPersons() {
-        return personRepository.findAll();
+    public List<PersonDto> findAllPersons() {
+        List<Person> persons = personRepository.findAll();
+        return persons.stream().map(this::convertToPersonDto).toList();
     }
 
-    public Person findPersonById(long id) {
-        return personRepository.findById(id).orElseThrow(() -> new NoSuchPersonException(id));
+    public PersonDto findPersonById(long id) {
+        Person person = personRepository.findById(id).orElseThrow(() -> new NoSuchPersonException(id));
+        return convertToPersonDto(person);
     }
 
-    public Person findPersonByEmail(String email) {
-        return personRepository.findByEmail(email).orElseThrow(() -> new NoSuchPersonException(email));
+    public PersonDto findPersonByEmail(String email) {
+        Person person = personRepository.findByEmail(email).orElseThrow(() -> new NoSuchPersonException(email));
+        return convertToPersonDto(person);
     }
 
     public Person convertToExistingPerson(long personId, PersonDto personDto) {
@@ -49,5 +52,9 @@ public class PersonService {
     }
     public Person convertToNewPerson(PersonDto personDto) {
         return new Person(personDto.name(), personDto.email());
+    }
+
+    private PersonDto convertToPersonDto(Person person) {
+        return new PersonDto(person.getName(), person.getEmail());
     }
 }

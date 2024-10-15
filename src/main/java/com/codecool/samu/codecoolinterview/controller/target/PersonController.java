@@ -16,7 +16,7 @@ public class PersonController {
     }
 
     @GetMapping("/all")
-    public List<Person> findAllPersons() {
+    public List<PersonDto> findAllPersons() {
         return personService.findAllPersons();
     }
 
@@ -26,12 +26,12 @@ public class PersonController {
     }
 
     @GetMapping("/id/{id}")
-    public Person findPersonById(@PathVariable long id) {
+    public PersonDto findPersonById(@PathVariable long id) {
         return personService.findPersonById(id);
     }
 
     @GetMapping("/email/{email}")
-    public Person findPersonByEmail(@PathVariable String email) {
+    public PersonDto findPersonByEmail(@PathVariable String email) {
         return personService.findPersonByEmail(email);
     }
 }
